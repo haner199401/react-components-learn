@@ -5,7 +5,7 @@ var HelloWolrd = React.createClass({
     }
 });
 
-ReactDOM.render(<HelloWolrd />, document.getElementById('container'));
+ReactDOM.render(<HelloWolrd />, document.getElementById('helloworld'));
 
 /**
  * prop
@@ -17,7 +17,7 @@ HelloWolrd = React.createClass({
     }
 });
 
-ReactDOM.render(<HelloWolrd val="world"/>, document.getElementById('container'));
+ReactDOM.render(<HelloWolrd val="world"/>, document.getElementById('helloworld2'));
 
 
 

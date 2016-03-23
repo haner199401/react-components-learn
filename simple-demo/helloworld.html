@@ -5,11 +5,17 @@
     <title>React Demos</title>
 </head>
 <body>
-<div id="container"></div>
-<script src="bower_components/react/react-with-addons.min.js"></script>
-<script src="bower_components/react/react-dom.min.js"></script>
-<script src="bower_components/babel-browser/browser.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<div class="container">
+    <div id="helloworld"></div>
+    <p class=""></p>
+    <div id="helloworld2"></div>
+    <div id="commentbox"></div>
+    <div id="commentboxState"></div>
+</div>
+<script src="../libs/react/react-with-addons.min.js"></script>
+<script src="../libs/react/react-dom.min.js"></script>
+<script src="../libs/babel-browser/browser.js"></script>
+<script src="../libs/jquery/dist/jquery.min.js"></script>
 
 <script>
     var Log = function (msg) {
@@ -17,9 +23,9 @@
     };
 </script>
 
-<!--<script type="text/babel" src="jsx/helloworld.js"></script>-->
+<script type="text/babel" src="jsx/helloworld.js"></script>
 
-<!--<script type="text/babel" src="jsx/commentbox.js"></script>-->
+<script type="text/babel" src="jsx/commentbox.js"></script>
 
 <script type="text/babel" src="jsx/commentbox-state.js"></script>
 

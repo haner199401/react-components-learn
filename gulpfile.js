@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 // live reload
 gulp.task('server',function(){
     browserSync.init({
-        server:'./simple-demo',
+        server:'./',
         port:port,
         notify:true
     });
@@ -29,8 +29,8 @@ gulp.task('html',function(){
 
 //watch for reload
 gulp.task('watch',function(){
-    gulp.watch('./**/*.js',['js']);
-    gulp.watch('./**/*.html',['html']);
+    gulp.watch('./**/*.js',browserSync.reload);
+    gulp.watch('./**/*.html',browserSync.reload);
 });
 
 

@@ -119,5 +119,5 @@ var LoadTip = React.createClass({
 
 ReactDOM.render(
     <CommentBox commentSubmitUrl="http://xxx.xxx.com"/>,
-    document.getElementById('container')
+    document.getElementById('commentboxState')
 );

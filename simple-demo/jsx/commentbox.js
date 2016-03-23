@@ -62,5 +62,5 @@ var Comment = React.createClass({
 
 ReactDOM.render(
     <CommentBox data={data}/>,
-    document.getElementById('container')
+    document.getElementById('commentbox')
 );
