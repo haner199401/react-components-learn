@@ -15,22 +15,9 @@ gulp.task('server',function(){
     });
 });
 
-// reload Js
-gulp.task('js',function(){
-    gulp.src('./**/*.js')
-        .pipe(browserSync.stream());
-});
-
-// reload html
-gulp.task('html',function(){
-    gulp.src('./**/*.html')
-        .pipe(browserSync.stream());
-});
-
 //watch for reload
 gulp.task('watch',function(){
-    gulp.watch('./**/*.js',browserSync.reload);
-    gulp.watch('./**/*.html',browserSync.reload);
+    gulp.watch('./**/*',browserSync.reload);
 });
 
 

@@ -6,22 +6,26 @@
 var CommentBox = React.createClass({
     getInitialState: function () {
         Log('getInitialState...');
-        return {data: [],commentCount:0};
+        return {data: [{author: "Haner", text: "This is one comment",id:0}],commentCount:0};
     },
     componentDidMount: function () {
         Log('componentDidMount...');
-        var data = [
-            {author: "13111", text: "This is one comment"},
-            {author: "Wang", text: "This is tow comment"}
-        ];
-        var _this = this;
-        Log('请求开始：'+ this.props.commentSubmitUrl);
+
+        //初始化数据
+        this.state.data.push(
+            {author: "Tommy", text: "This is one comment",id:1},
+            {author: "Dalin", text: "This is three comment",id:2});
+
+        Log('请求开始：'+ this.props.url);
+
         //模拟网络请求
         setTimeout(function () {
             Log('请求完毕！');
-            _this.setState({data: data});
-            _this.setState({commentCount: data.length});
-        }, 1000);
+
+            this.setState({data: this.state.data});
+            this.setState({commentCount: this.state.data.length});
+        }.bind(this), 1000);
+
     },
     handleCommentSubmit:function(comment){ //提交评论
         //setState 会再次 render
@@ -47,8 +51,9 @@ var CommentBox = React.createClass({
 var CommentList = React.createClass({
     render: function () {
         var comments = this.props.data.map(function (comment) {
+            //数组循环自插件时 需要添加 key 属性
             return (
-                <Comment author={comment.author}>
+                <Comment author={comment.author} key={comment.id}>
                     {comment.text}
                 </Comment>
             )
@@ -96,7 +101,7 @@ var CommentForm = React.createClass({
 var Comment = React.createClass({
     render: function () {
         return (
-            <div>
+            <div style={{padding:'10px'}}>
                 Author：{this.props.author}
                 <br/>
                 Reply：{this.props.children}
@@ -106,18 +111,8 @@ var Comment = React.createClass({
     }
 });
 
-//加载提示 - item
-var LoadTip = React.createClass({
-    hideTip:function(){
-
-    },
-    render:function(){
-        return (<div>加载中...</div>);
-    }
-});
-
 
 ReactDOM.render(
-    <CommentBox commentSubmitUrl="http://xxx.xxx.com"/>,
+    <CommentBox url="http://xxx.xxx.com"/>,
     document.getElementById('commentboxState')
 );
