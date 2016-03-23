@@ -1,0 +1,29 @@
+{
+  "name": "react-demos",
+  "version": "1.0.0",
+  "description": "learn react",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haner199401/react-demos.git"
+  },
+  "keywords": [
+    "react",
+    "demo"
+  ],
+  "author": "Haner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haner199401/react-demos/issues"
+  },
+  "homepage": "https://github.com/haner199401/react-demos#readme",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.10.0"
+  }
+}
