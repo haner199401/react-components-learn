@@ -19,15 +19,9 @@ var CommentBox = React.createClass({
 var CommentList = React.createClass({
     render: function() {
         var comments = this.props.data.map(function(comment){
-            return (<Comment author={comment.author} key={comment.id}>
-                {comment.text}
-            </Comment>)
+            return (<Comment author={comment.author} key={comment.id}>{comment.text}</Comment>)
         });
-        return (
-            <div>
-                {comments}
-            </div>
-        );
+        return (<div>{comments}</div>);
     }
 });
 

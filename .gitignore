@@ -1,5 +1,6 @@
-/libs
+app/libs
 .idea
 .DS_Store
 node_modules
+npm-debug.log
 bower_components

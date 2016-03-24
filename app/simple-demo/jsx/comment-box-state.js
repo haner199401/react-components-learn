@@ -9,7 +9,7 @@ var CommentBox = React.createClass({
         return {data: [{author: "Haner", text: "This is one comment",id:0}],commentCount:0};
     },
     componentDidMount: function () {
-        Log('componentDidMount...');
+        Log('componentDidMount......');
 
         //初始化数据
         this.state.data.push(
@@ -90,7 +90,7 @@ var CommentForm = React.createClass({
         return (
             <form onSubmit={this.handleSubmit}>
                 <input type="text" placeholder="Your name" ref="author" onChange={this.setVal}/>
-                <input type="text" placeholder="Say something..." ref="text" valueLink={this.linkState('text')}/>
+                <input type="text" placeholder="Say something" ref="text" valueLink={this.linkState('text')}/>
                 <input type="submit" value="评论" />
             </form>
         );
