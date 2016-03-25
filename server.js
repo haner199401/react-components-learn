@@ -16,4 +16,13 @@ server.get('/commentlist', function(req, res) {
     res.json({ msg: 'ok', data: data });
 });
 
+server.get('/booklist', function(req, res) {
+    var data = [];
+    for (var i = 1; i < 10; i++) {
+        data.push({ name: 'JavaScript 权威指南第' + i + '版', price:~~(Math.random()*30*i) });
+    }
+
+    res.json({ msg: 'ok', data: data });
+});
+
 server.listen(8088);

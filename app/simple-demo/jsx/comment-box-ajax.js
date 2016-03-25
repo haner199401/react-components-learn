@@ -9,14 +9,13 @@ var CommentBox = React.createClass({
         return {data:[]}
     },
     componentDidMount:function(){
-        var _this = this;
         $.ajax({
             url:'http://localhost:8088/commentlist',
             type:'get',
             dataType:'json',
             success:function(res,textStatus,xhr){
-                _this.setState({data:res.data});
-            }
+                this.setState({data:res.data});
+            }.bind(this)
         });
     },
     render: function() {
@@ -41,9 +40,9 @@ var CommentList = React.createClass({
 var Comment = React.createClass({
     render: function() {
         return (
-            <div>
-                <h1>Author：{this.props.author}</h1>
-                <h2>Reply：{this.props.children}</h2>
+            <div style={{borderBottom:'1px solid gray'}}>
+                <h4>Author：{this.props.author}</h4>
+                <h5>Reply：{this.props.children}</h5>
             </div>
         );
     }
