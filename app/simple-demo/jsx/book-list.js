@@ -22,6 +22,9 @@ var BookRow = React.createClass({
     }
 });
 
+
+var count = 1;
+
 /**
  * 表格
  */
@@ -43,17 +46,23 @@ var BookList = React.createClass({
     },
     componentDidUpdate:function(){//该方法可以获取到 props 值, 但调用 setState 重新 render 会进入死循环 (react 生命周期!!!)
         console.log('componentDidUpdate:' );
-        console.log(this.props.data);
+        //console.log(this.props.searchKey);
     },
     componentDidMount: function () {
-        this.setState({tableData: this.props.data});  //第一次执行,无法接受都父组件的数据,父组件异步传递数据
+        //this.setState({tableData: this.props.data});  //第一次执行,无法接受都父组件的数据,父组件异步传递数据
         console.log('componentDidMount:   ' + this.props.url);
     },
 
     render: function () {
-        var BookRows = this.props.data.map(function (book, index) {
+        var BookRows = this.props.data.filter(function(item){
+            return item.name.indexOf(this.props.searchKey) != -1;
+
+        }.bind(this)).map(function (book, index) {
             return <BookRow key={index} num={index + 1} name={book.name} price={book.price}/>
         });
+
+        console.log('render: '+ (count++));
+
         return (<table className="table table-hover">
             <thead>
             <tr>
@@ -74,29 +83,29 @@ var BookList = React.createClass({
  * 搜索框
  */
 var SearchBook = React.createClass({
-    handleSubmit:function(e){
-        console.log(e);
+    handleSubmit:function(){
+       this.props.userInput(this.refs.key.value);
     },
     render: function () {
         return (<form className="form-inline">
             <div className="form-group">
-                <input type="text" className="form-control" onKeyDown={this.handleSubmit} placeholder="输入关键字"/>
+                <input type="text" ref="key" className="form-control" onKeyUp={this.handleSubmit} placeholder="输入关键字"/>
             </div>
         </form>);
     }
 });
 
-var count = 1;
-var BookStore = React.createClass({
+
+var BookStoreMain = React.createClass({
     getInitialState: function () {
         return {
             data: [],
-            url:''
+            url:'',
+            searchKey:''
         };
     },
     componentDidMount: function () {
         if (!this.props.url) {console.error('请求地址不能为空!');return;}
-
         $.ajax({
             url: this.props.url,
             success: function (res) {
@@ -104,17 +113,19 @@ var BookStore = React.createClass({
             }.bind(this)
         });
     },
+    onUserInput:function(key){//接受 searchBook 所输入的值
+        this.state.searchKey = key;
+        this.setState(this.state);
+    },
     render: function () {
-        console.log('render: '+ (count++));
-
         return (<div className="row-fluid">
             <h2>Book List</h2>
-            <SearchBook />
-            <BookList data={this.state.data}/>
+            <SearchBook userInput={this.onUserInput}/>
+            <BookList data={this.state.data} searchKey={this.state.searchKey}/>
         </div>);
     }
 });
 
 
 
-ReactDOM.render(<BookStore url="http://localhost:8088/booklist"/>, document.querySelector("#container"));
+ReactDOM.render(<BookStoreMain url="http://localhost:8088/booklist"/>, document.querySelector("#container"));

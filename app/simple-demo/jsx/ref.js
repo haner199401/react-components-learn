@@ -1,5 +1,8 @@
 /**
  * Created by haner on 16/3/25.
+ *
+ *
+ * ref 可拿到真是 DOM  或者传入 函数 回调出 real dom
  */
 var App = React.createClass({
     getInitialState: function() {
@@ -78,14 +81,11 @@ var MyComponent = React.createClass({
         this.myTextInput = oInput;
     },
     handleClick: function() {
-        // Explicitly focus the text input using the raw DOM API.
         if (this.myTextInput !== null) {
             this.myTextInput.focus();
         }
     },
     render: function() {
-        // The ref attribute is a callback that saves a reference to the
-        // component to this.myTextInput when the component is mounted.
         return (
             <div>
                 <input type="text" ref={this.getRealDom} />
