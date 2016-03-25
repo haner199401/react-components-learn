@@ -32,29 +32,26 @@ var BookList = React.createClass({
         };
     },
     componentWillReceiveProps:function(){
-        console.log('componentWillReceiveProps:   ' + this.props.url);
+        console.log('componentWillReceiveProps:   ' + this.props.data);
     },
     shouldComponentUpdate:function(){
-        console.log('shouldComponentUpdate:   ' + this.props.url);
+        console.log('shouldComponentUpdate:   ' + this.props.data);
         return true;
     },
     componentWillUpdate:function(){
-        console.log('componentWillUpdate:   ' + this.props.url);
+        console.log('componentWillUpdate:   ' + this.props.data);
     },
-    componentDidUpdate:function(){// 修改 props 或者 state 将触发该方法
+    componentDidUpdate:function(){//该方法可以获取到 props 值, 但调用 setState 重新 render 会进入死循环 (react 生命周期!!!)
         console.log('componentDidUpdate:' );
         console.log(this.props.data);
-        //this.setState({tableData: this.props.data});
-
     },
     componentDidMount: function () {
-        this.setState({tableData: this.props.data});
+        this.setState({tableData: this.props.data});  //第一次执行,无法接受都父组件的数据,父组件异步传递数据
         console.log('componentDidMount:   ' + this.props.url);
-
     },
 
     render: function () {
-        var BookRows = this.state.tableData.map(function (book, index) {
+        var BookRows = this.props.data.map(function (book, index) {
             return <BookRow key={index} num={index + 1} name={book.name} price={book.price}/>
         });
         return (<table className="table table-hover">
@@ -77,12 +74,14 @@ var BookList = React.createClass({
  * 搜索框
  */
 var SearchBook = React.createClass({
+    handleSubmit:function(e){
+        console.log(e);
+    },
     render: function () {
         return (<form className="form-inline">
             <div className="form-group">
-                <input type="text" className="form-control" placeholder="输入关键字"/>
+                <input type="text" className="form-control" onKeyDown={this.handleSubmit} placeholder="输入关键字"/>
             </div>
-            <button type="submit" className="btn btn-default">Search</button>
         </form>);
     }
 });
