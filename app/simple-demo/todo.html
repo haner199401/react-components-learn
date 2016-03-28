@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>component communicate</title>
+    <title>Simple Todo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css">
+
+    <style>
+        .example-enter {
+            opacity: 0.01;
+        }
+
+        .example-enter.example-enter-active {
+            opacity: 1;
+            transition: opacity 500ms ease-in;
+        }
+
+        .example-leave {
+            opacity: 1;
+        }
+
+        .example-leave.example-leave-active {
+            opacity: 0.01;
+            transition: opacity 300ms ease-in;
+        }
+
+
+        .icon-remove{
+
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -17,6 +44,6 @@
 <script src="../libs/jquery/dist/jquery.min.js"></script>
 
 
-<script type="text/babel" src="./jsx/communicate-between-components.js"></script>
+<script type="text/babel" src="./jsx/todo.js"></script>
 </body>
 </html>

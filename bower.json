@@ -24,6 +24,7 @@
     "todomvc-app-css": "~2.0.1"
   },
   "devDependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "animate.css": "^3.5.1"
   }
 }
