@@ -10,7 +10,7 @@ var CommentBox = React.createClass({
     },
     componentDidMount:function(){
         $.ajax({
-            url:'http://localhost:8088/commentlist',
+            url:'http://localhost:8038/commentlist',
             type:'get',
             dataType:'json',
             success:function(res,textStatus,xhr){
