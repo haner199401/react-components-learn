@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../libs/animate.css/animate.min.css">
+    <style>
+        .example-enter {
+            opacity: 0.01;
+        }
+
+        .example-enter.example-enter-active {
+            opacity: 1;
+            transition: opacity 500ms ease-in;
+        }
+
+        .example-leave {
+            opacity: 1;
+        }
+
+        .example-leave.example-leave-active {
+            opacity: 0.01;
+            transition: opacity 300ms ease-in;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid" id="container"></div>
+
+
+<script src="../libs/react/react-with-addons.js"></script>
+<script src="../libs/react/react-dom.js"></script>
+<script src="../libs/babel-browser/browser.js"></script>
+<script src="../libs/jquery/dist/jquery.min.js"></script>
+
+
+<script type="text/babel" src="./jsx/animation.js"></script>
+</body>
+</html>

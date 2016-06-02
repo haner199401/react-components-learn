@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Simples</title>
+</head>
+<body>
+
+<div id="helloworld"></div>
+<div id="helloworld2"></div>
+<div id="commentbox"></div>
+<div id="commentboxState"></div>
+<div id="messagebox"></div>
+
+
+<script src="../libs/react/react-with-addons.js"></script>
+<script src="../libs/react/react-dom.js"></script>
+<script src="../libs/babel-browser/browser.js"></script>
+<script src="../libs/jquery/dist/jquery.min.js"></script>
+
+<script>
+    var Log = function (msg) {
+        console ? console.log(msg) : '';
+    };
+</script>
+
+<script type="text/babel" src="jsx/helloworld.js"></script>
+
+<script type="text/babel" src="jsx/comment-box.js"></script>
+
+<script type="text/babel" src="jsx/comment-box-state.js"></script>
+
+<script type="text/babel" src="jsx/message-box.js"></script>
+
+
+</body>
+</html>
