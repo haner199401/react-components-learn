@@ -1,26 +1,27 @@
 {
-  "name": "react-demos",
+  "name": "react-components-learn",
   "version": "1.0.0",
-  "description": "learn react",
-  "main": "index.js",
+  "description": "react learn",
+  "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack --progress --colors --watch",
-    "server": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haner199401/react-demos.git"
+    "url": "git+https://github.com/haner199401/react-components-learn.git"
   },
   "keywords": [
     "react",
+    "component",
+    "learn",
     "demo"
   ],
   "author": "Haner",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/haner199401/react-demos/issues"
+    "url": "https://github.com/haner199401/react-components-learn/issues"
   },
-  "homepage": "https://github.com/haner199401/react-demos#readme",
+  "homepage": "https://github.com/haner199401/react-components-learn#readme",
   "dependencies": {
     "array-tree-filter": "~1.0.0",
     "classnames": "~2.2.0",

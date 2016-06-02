@@ -7,7 +7,7 @@
     "branch": "master",
     "commit": "d47278244dd8f26497747f341d50de6f677d4061"
   },
-  "_source": "git://github.com/haner199401/babel-browser.git",
+  "_source": "https://github.com/haner199401/babel-browser.git",
   "_target": "*",
   "_originalSource": "babel-browser"
 }
