@@ -7,7 +7,7 @@ var webpack = require('webpack'),
     path = require('path');
 
 module.exports = {
-    entry:'./app/index.jsx',
+    entry: './app/index.jsx',
     output: {
         path: './build',
         filename: 'bundle.js?[hash]'
@@ -18,27 +18,30 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel'
         }, {
-            test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('style!css!scss')
-        }, {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract('style!css')
+        }, {
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract("css!sass")
+        }, {
+            test: /\.(woff|png|jpg|gif|eot|svg|ttf)$/,
+            loader: 'url-loader?limit=10000'
         }]
     },
     resolve: {
-        extensions: ['','.js', '.jsx', '.es6', '.json'],
+        extensions: ['', '.js', '.jsx', '.es6', '.json'],
         modulesDirectories: ['node_modules', 'lib'],
-        alias:{
-           // react:'react' 
+        alias: {
+            // react:'react' 
         }
     },
     plugins: [
         new CleanWebpackPlugin(['./build']),
-        new CopyWebpackPlugin([{from:'./simples',to: './simples'}]),
-        new webpack.optimize.CommonsChunkPlugin("vendor","common.js"),
+        new CopyWebpackPlugin([{ from: './simples', to: './simples' }]),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "common.js"),
         new ExtractTextPlugin('styleshtee.css'),
         new HtmlWebpackPlugin({
-            template:'./app/index.html'
+            template: './app/index.html'
         }),
         new BrowserSyncPlugin({
             notify: true,
