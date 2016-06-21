@@ -4,10 +4,29 @@ var webpack = require('webpack'),
     BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
+    OpenBrowserPlugin = require('open-browser-webpack-plugin'),
     path = require('path');
 
+var port = 8088;
+
 module.exports = {
-    entry: './app/index.jsx',
+    devServer: {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        },
+        historyApiFallback: true,
+        hot: true,
+        inline: true,
+        progress: true,
+        contentBase: './build',
+        port: port
+    },
+    entry: [
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://localhost:' + port,
+        path.resolve(__dirname, 'app/index.jsx')
+    ],
     output: {
         path: './build',
         filename: 'bundle.js?[hash]'
@@ -43,10 +62,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './app/index.html'
         }),
-        new BrowserSyncPlugin({
-            notify: true,
-            host: 'localhost',
-            server: { baseDir: ['./build'] }
-        })
+        new webpack.HotModuleReplacementPlugin(),
+        new OpenBrowserPlugin({ url: 'http://localhost:' + port })
+        //new BrowserSyncPlugin({
+        //    notify: true,
+        //    host: 'localhost',
+        //    server: { baseDir: ['./build'] }
+        //})
     ]
 };

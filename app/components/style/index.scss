@@ -1,2 +1,10 @@
+@import "core/normalize";
+@import "helper/function";
+@import "helper/animation";
+@import "helper/mixin";
+
 @import "./themes/default";
 @import "./core/base";
+
+@import "components/tabbar"; //菜单
+@import "components/layer";//遮罩层

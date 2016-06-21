@@ -1,0 +1,73 @@
+
+@mixin tabbar-style($background: $tabbar-background) {
+  background: $background;
+}
+
+@mixin tabbar-link-color(
+  $color: $tabbar-color,
+  $active-color: $global-primary
+) {
+  &,
+  & a {
+    color: $color;
+  }
+
+  > .#{map_get($am-states, active)} {
+    &, & a {
+      color: $active-color;
+    }
+  }
+}
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+.#{$tabbar-prefix} {
+  display: flex;
+  width: 100%;
+  height: $tabbar-height;
+  position: fixed;
+  bottom: 0;
+  z-index: $tabbar-zindex;
+
+  @include tabbar-style();
+  @include tabbar-link-color();
+}
+
+.#{$tabbar-prefix}-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &.#{map_get($am-states, active)} {
+    cursor: default;
+    pointer-events: none;
+    background: $tabbar-active-background;
+    color: $tabbar-active-background;
+  }
+}
+
+.#{$tabbar-prefix}-label {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+// Modifiers
+// -----------------------------------------------------------------------------
+$tabbar-styles: map_merge($am-colors, (dark: $dark-alt)) !default;
+
+@each $color-key, $color in $tabbar-styles {
+  .#{$tabbar-prefix}-#{$color-key} {
+    @include tabbar-style($color);
+  }
+}
+
+// common style
+#{keys-to-selector($tabbar-styles, $tabbar-prefix)} {
+  @include tabbar-link-color(#dedede, $white);
+}

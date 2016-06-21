@@ -1,2 +1,132 @@
-$zindex-affix:10;
-$iconfont-url:'./iconfont';
+// Set classes namespace, e.g. `am-`
+$namespace: null !default;
+
+// This sets 1rem to be 16px
+$rem-base: 16px;
+
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with browser-based text zoom or user-set defaults.
+
+// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+// If you want your base font-size to be different and not have it affect the grid breakpoints,
+// set $rem-base to $base-font-size and make sure $base-font-size is a px value.
+$base-font-size: 100% !default;
+
+// $base-line-height is 24px while $base-font-size is 16px
+$base-line-height: 1.5 !default;
+
+// Define default font weights
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+$font-size-xs: rem-calc(12) !default;
+$font-size-sm: rem-calc(14) !default;
+$font-size-default: rem-calc(16) !default;
+$font-size-lg: rem-calc(18) !default;
+$font-size-xl: rem-calc(20) !default;
+$font-size-xxl: rem-calc(24) !default;
+
+$black: #000 !default;
+$white: #fff !default;
+
+// Application Colors
+$global-primary: #0e90d2 !default;
+$global-secondary: lighten($global-primary, 15%) !default;
+$global-success: #5eb95e !default;
+$global-warning: #F37B1D !default;
+$global-alert: #dd514c !default;
+$global-bonday: #ff8a00 !default;
+
+// @see http://sassme.arc90.com/
+$gray-darker: lighten($black, 13.5%) !default; // #222
+$gray-dark: lighten($black, 20%) !default;   // #333
+$gray: lighten($black, 33.5%) !default; // #555
+// $gray-light: lighten($black, 46.7%) !default; // #777
+$gray-light: lighten($black, 53.3%) !default; // #888
+$gray-lighter: lighten($black, 93.5%) !default; // #eee
+// 87.5 => #dfdfdf
+
+$light-alt: #e6e6e6 !default;
+$light-base: $gray-dark !default;
+
+$dark-alt: #393939 !default;
+$dark-base: $white !default;
+
+
+// For internal use: a color map
+$am-colors: (
+        primary: $global-primary,
+        secondary: $global-secondary,
+        success: $global-success,
+        warning: $global-warning,
+        alert: $global-alert,
+        dark: $dark-alt,
+        bonday:$global-bonday
+);
+
+$am-sizes: (
+        xs: $font-size-xs,
+        sm: $font-size-sm,
+        lg: $font-size-lg,
+        xl: $font-size-xl
+);
+
+$am-states: (
+        active: #{$namespace}active,
+        disabled: #{$namespace}disabled
+);
+
+// Diffirent border-radius styles
+$global-radius: 4px !default;
+$global-rounded: 1000px !default;
+
+$am-radius: (
+        radius: $global-radius,
+        rounded: $global-rounded
+);
+
+// Default spacing
+$global-padding: 1rem !default;
+$global-margin: 1rem !default;
+$global-spacing: rem-calc(15) !default;
+
+// Font-families
+$font-family-sans-serif: "Helvetica Neue", Helvetica, "Segoe UI", Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei", sans-serif !default;
+$font-family-serif: Georgia, "Times New Roman", Times, SimSimSun, serif; //FangSong, STFangSong
+$font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace !default;
+
+
+// Base
+// -----------------------------------------------------------------------------
+$body-background: #f4f4f4 !default;
+$body-font-color: $gray-dark !default;
+$body-font-family: $font-family-sans-serif;
+$body-font-weight: $font-weight-normal !default;
+$body-font-style: normal !default;
+
+
+// TabBar Variables
+// -----------------------------------------------------------------------------
+$tabbar-prefix: #{$namespace}tabbar !default;
+$tabbar-height-px: 49 !default;
+$tabbar-height: rem-calc($tabbar-height-px);
+$tabbar-padding-horizontal: $global-padding !default;
+$tabbar-background: $light-alt !default;
+$tabbar-active-background:'';
+$tabbar-color: $white!default;
+$tabbar-zindex: 99;
+
+
+//Loading
+// -----------------------------------------------------------------------------
+$loading-prefix: #{$namespace}loading !default;
+$loading-background:rgba(0, 0, 0, 0.2);
+$loading-zindex: 999;
+$loading-size:rem-calc(30);
+
+
+//Layer
+// -----------------------------------------------------------------------------
+$layer-prefix: #{$namespace}layer !default;
+$layer-background:rgba(0, 0, 0, 0.2);
+$layer-zindex: 999;

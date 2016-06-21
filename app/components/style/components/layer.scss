@@ -1,0 +1,25 @@
+@mixin layer-style($background: $layer-background) {
+    background: $background;
+}
+
+//默认样式
+.#{$layer-prefix} {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: $layer-zindex;
+ @include layer-style();
+}
+
+@each $color-key, $color in $am-colors {
+  .#{$layer-prefix}-#{$color-key} {
+    @include layer-style($color);
+  }
+}
+
+
+
+
+
