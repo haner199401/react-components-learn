@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, hashHistory,IndexRoute,useRouterHistory,browserHistory} from 'react-router';
 import { createHashHistory } from 'history'
-import {App,Home,Topic,Other} from './components/App';
+import {App,Home,Topic,Other,WikiBox} from './components/App';
 import NotFound from './components/NotFound';
 
 //const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
@@ -15,9 +15,10 @@ import NotFound from './components/NotFound';
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
+            <IndexRoute component={Home}/>
 			<Route path="home" component={Home} />
             <Route path="topic" component={Topic} />
-            <Route path="other" component={Other} />
+            <Route path="wiki" component={WikiBox} />
         </Route>
         <Route path="*" component={NotFound} status={404}/>
     </Router>
