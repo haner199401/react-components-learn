@@ -1,13 +1,12 @@
 var webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     OpenBrowserPlugin = require('open-browser-webpack-plugin'),
     path = require('path');
 
-var port = 8088;
+var port = 8089;
 
 module.exports = {
     devServer: {
@@ -64,10 +63,5 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserPlugin({ url: 'http://localhost:' + port })
-        //new BrowserSyncPlugin({
-        //    notify: true,
-        //    host: 'localhost',
-        //    server: { baseDir: ['./build'] }
-        //})
     ]
 };

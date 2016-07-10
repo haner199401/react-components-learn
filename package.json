@@ -4,9 +4,8 @@
   "description": "react learn",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack --colors --progress -w",
-    "start.webpack.server": "webpack-dev-server --devtool eval --progress --hot --colors",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --colors --progress -w",
+    "dev": "webpack-dev-server --devtool eval --progress --hot --colors"
   },
   "repository": {
     "type": "git",

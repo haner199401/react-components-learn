@@ -9,14 +9,14 @@ var CommentBox = React.createClass({
         return {data:[]}
     },
     componentDidMount:function(){
-        $.ajax({
-            url:'http://localhost:8038/commentlist',
-            type:'get',
-            dataType:'json',
-            success:function(res,textStatus,xhr){
-                this.setState({data:res.data});
-            }.bind(this)
-        });
+        //$.ajax({
+        //    url:'http://localhost:8038/commentlist',
+        //    type:'get',
+        //    dataType:'json',
+        //    success:function(res,textStatus,xhr){
+                this.setState({data:[{author:'Haner',text:'。。。'}]});
+            //}.bind(this)
+        //});
     },
     render: function() {
         return (

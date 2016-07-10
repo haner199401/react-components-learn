@@ -16,11 +16,12 @@ export default class Loader extends React.Component {
     }
 
     render() {
-        return (<div className="layer">
-                <div className="loading">
-                    <div className="loading-bounce1">1</div>
-                    <div className="loading-bounce2">2</div>
-                    <div className="loading-bounce3">3</div>
+
+        return (<div className="">
+                <div className="loading loading-bonday">
+                    <div className="loading-bounce1"></div>
+                    <div className="loading-bounce2"></div>
+                    <div className="loading-bounce3"></div>
                 </div>
         </div>);
     }

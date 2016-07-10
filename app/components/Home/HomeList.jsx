@@ -17,21 +17,15 @@ class HomeRow extends React.Component {
 
 
 class HomeList extends React.Component {
-    static propsType = {
-        data: React.PropTypes.shape({
-            title: React.PropTypes.string,
-            coverImg: React.PropTypes.string
-        }).isRequired
-    };
-
 
     render() {
-        var HomeRows = this.props.data.map(function(item,key){
-            return <HomeRow key={key} coverImg={item.coverImg} title={item.title}/>
-        });
 
         return (
-            <ul>{HomeRows}</ul>
+            <ul>
+                {this.props.data.map(function(item,key){
+                    return <HomeRow key={key} coverImg={item.poster.url} title={item.title}/>
+                })}
+            </ul>
         );
     }
 }
