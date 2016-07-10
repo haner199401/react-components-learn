@@ -22,10 +22,10 @@ var Header = React.createClass({
     render:function() {
         return (
             <form onSubmit={this.handleAddItem}>
-            <header className="header">
-                <h1>Todos</h1>
-                <input ref="oInput" className="new-todo" placeholder="添加一条"/>
-            </header>
+                <header className="header">
+                    <h1>Todos</h1>
+                    <input ref="oInput" className="new-todo" placeholder="添加一条"/>
+                </header>
             </form>
         );
     }
@@ -62,13 +62,13 @@ var TotoItem = React.createClass({
         e.target.nodeName.toLowerCase() === 'button' ? this.props.del(uuid) : this.props.complete(e.target.checked,uuid);
     },
     componentDidMount() {
-        console.log(this.props.item.status);
+
     },
     render:function() {
         return (
-            <li data-uuid={this.props.item.uuid}>
+            <li data-uuid={this.props.item.uuid} className={this.props.item.status ? 'completed':''}>
                 <div className="view">
-                    <input className="toggle" type="checkbox" onChange={this.handelChange}/>
+                    <input className="toggle" type="checkbox" checked={this.props.item.status} onChange={this.handelChange}/>
                     <label>{this.props.item.val}</label>
                     <button className="destroy" onClick={this.handelChange}/>
                 </div>
@@ -91,10 +91,18 @@ var Footer = React.createClass({
             data:[]
         };
     },
+    getInitialState:function(){
+        return {
+            active:''
+        }
+    },
     componentDidMount() {
+        this.props.filter(location.hash.slice(2));
+        this.setState({active:location.hash.slice(2)});
         //监听hash路由变化
         window.addEventListener('hashchange',function(){
             this.props.filter(location.hash.slice(2));
+            this.setState({active:location.hash.slice(2)});
         }.bind(this),false);
     },
     render:function() {
@@ -106,13 +114,13 @@ var Footer = React.createClass({
                 </span>
                 <ul className="filters" ref="filters">
                     <li>
-                        <a href="#/" className="selected">All</a>
+                        <a href="#/" className={!this.state.active ? 'selected' :''}>All</a>
                     </li>
                     <li>
-                        <a href="#/active" className="">Active</a>
+                        <a href="#/active" className={this.state.active=='active' ? 'selected' :''}>Active</a>
                     </li>
                     <li>
-                        <a href="#/completed" className="">Completed</a>
+                        <a href="#/completed" className={this.state.active=='completed' ? 'selected' :''}>Completed</a>
                     </li>
                 </ul>
             </footer>
@@ -128,36 +136,41 @@ var App = React.createClass({
     getInitialState:function() {
       return {todoList:StroageUtil.fetch() || []};
     },
+
     getInputVal:function(val){
-        this.state.todoList.unshift({
+        var data = StroageUtil.fetch();
+        data.unshift({
             uuid : Math.random().toString(36).substring(3, 8),
             val:val,
             status:''
         });
-        this.setState({todoList:this.state.todoList});
-        StroageUtil.saveAndUpdate(this.state.todoList);
+        StroageUtil.saveAndUpdate(data);
+        this.filterData();
     },
+
     filterData:function(filterKey){
-        console.log(filterKey);
+        filterKey = filterKey || location.hash.slice(2);
+
         var data = filterKey === '' ? StroageUtil.fetch() : StroageUtil.fetch().filter(function(item){
-            return  item.status == (filterKey=='active');
+            return  item.status == !(filterKey=='active');
         });
 
         this.setState({todoList:data});
     },
+
     delAction:function(uuid){
         StroageUtil.saveAndUpdate(this.state.todoList.filter(function(item){return item.uuid != uuid;}));
         this.setState({todoList:StroageUtil.fetch()});
     },
+
     completeAction:function(isComplete,uuid){
-        console.log(isComplete);
-        StroageUtil.saveAndUpdate(this.state.todoList.map(function(item){
+        StroageUtil.saveAndUpdate(StroageUtil.fetch().map(function(item){
             if(item.uuid === uuid){
                 item.status = isComplete;
             }
             return item;
         }));
-        this.setState({todoList:StroageUtil.fetch()});
+        this.filterData();
     },
     componentDidMount:function(){
         this.filterData(location.hash.slice(2));
