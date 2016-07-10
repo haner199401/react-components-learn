@@ -159,8 +159,8 @@ var App = React.createClass({
     },
 
     delAction:function(uuid){
-        StroageUtil.saveAndUpdate(this.state.todoList.filter(function(item){return item.uuid != uuid;}));
-        this.setState({todoList:StroageUtil.fetch()});
+        StroageUtil.saveAndUpdate(StroageUtil.fetch().filter(function(item){return item.uuid != uuid;}));
+        this.filterData();
     },
 
     completeAction:function(isComplete,uuid){
