@@ -107,7 +107,7 @@ var Footer = React.createClass({
     },
     render:function() {
         return (
-            <footer className="footer">
+            <footer className="footer" style={{display: this.props.data.length ? '':'none'}}>
                 <span className="todo-count">
                     <strong>{this.props.data.length}</strong>
                     <span> items</span>

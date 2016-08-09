@@ -6,7 +6,7 @@ var webpack = require('webpack'),
     OpenBrowserPlugin = require('open-browser-webpack-plugin'),
     path = require('path');
 
-var port = 8089;
+var port = 8088;
 
 module.exports = {
     devServer: {

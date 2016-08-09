@@ -3,6 +3,27 @@
 @import "../../style/helper/mixin";
 @import "../../style/themes/default";
 
-.home{
+.home {
   text-align: center;
+
+  ul {
+    //padding: 0 20px;
+
+    li {
+      box-shadow: 0 0 25px #ababab;
+      margin: 0 15px;
+      margin-top: 25px;
+      border-radius: 6px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+
+      h3 {
+        font-size: 12px;
+        padding: 10px 0;
+      }
+    }
+  }
 }

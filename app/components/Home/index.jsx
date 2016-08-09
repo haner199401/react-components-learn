@@ -5,7 +5,6 @@ import './style/home.scss';
 
 import React from 'react';
 import HomeList from './HomeList.jsx';
-import HomeListData from '../../mock-data/homelist_data';
 import Immutable from 'immutable';
 import request from 'superagent';
 
@@ -18,7 +17,6 @@ export default class Home extends React.Component {
     }
 
     componentDidUpdate(p){
-        console.log(p);
     }
 
     componentDidMount() {
@@ -32,7 +30,6 @@ export default class Home extends React.Component {
     render() {
         return (
             <div className="home">
-                <h3>HomeList</h3>
                 <HomeList data={this.state.data}/>
             </div>
         );
