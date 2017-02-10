@@ -5,9 +5,8 @@
 import './style/index.scss';
 import React from 'react';
 import { Link } from 'react-router';
-import Loader from '../Loader';
 import Home from '../Home';
-import Topic from '../Topic';
+import TodoApp from '../Todos';
 import WikiBox from '../Wiki';
 
 /**
@@ -15,18 +14,11 @@ import WikiBox from '../Wiki';
  * @type {Home}
  */
 exports.Home = Home;
-exports.Topic = Topic;
+exports.TodoApp = TodoApp;
 exports.WikiBox = WikiBox;
 
 
 export class App extends React.Component {
-
-
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     render() {
 		return (<div className="container">
             <div className="view">

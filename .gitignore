@@ -5,3 +5,4 @@ bower_components
 libs
 build
 /node_modules/
+/.idea/

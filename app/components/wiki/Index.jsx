@@ -6,7 +6,7 @@ import React from 'react';
 import Immutable from 'immutable';
 import request from 'superagent';
 import jsonp from 'superagent-jsonp';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import Loader from '../Loader';
 
 
@@ -62,6 +62,7 @@ export default class WikiBox extends React.Component {
 
 
     makeCall(keyWord) {
+
         const wikiUrl = "http://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&search=";
 
         this.setState({isShowLoading:!0});
@@ -73,11 +74,6 @@ export default class WikiBox extends React.Component {
             this.setState({autocomplete: Immutable.List(data), keyWord: '',isShowLoading:!!0});
         }.bind(this));
 
-        //request.get('https://api.xxjz.org/post?type=event').end(function(t,res){
-        //    console.log(res.body);
-        //});
-        //
-
 
     }
 
@@ -88,11 +84,15 @@ export default class WikiBox extends React.Component {
         return false;
     }
 
+    //渲染完成后
+    componentDidMount() {
+        this.refs.key.addEventListener('keyup', _.debounce(this.handleKeyUp.bind(this),500),false);
+    }
+
     render() {
-        console.log(this.state.isShowLoading);
         return (
             <div style={this.props.style.wikibox}>
-                <input type="text" style={this.props.style.searchInput} placeholder="WIKI搜索" onKeyUp={this.handleKeyUp.bind(this)}/>
+                <input type="text" style={this.props.style.searchInput} placeholder="WIKI搜索" ref="key"/>
                 <AutoCompleteBox list={this.state.autocomplete}/>
                 {this.state.isShowLoading ? <Loader/> : '' }
             </div>
