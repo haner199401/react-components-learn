@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --colors --progress -w",
-    "dev": "webpack-dev-server --devtool eval --progress --hot --colors"
+    "dev": "webpack-dev-server --devtool eval --hot"
   },
   "repository": {
     "type": "git",
