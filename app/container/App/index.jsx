@@ -5,9 +5,9 @@
 import './style/index.scss';
 import React from 'react';
 import { Link } from 'react-router';
-import Home from '../Home';
-import TodoApp from '../Todos';
-import WikiBox from '../Wiki';
+import Home from '../../components/Home';
+import TodoApp from '../../components/Todos';
+import WikiBox from '../../components/Wiki';
 
 /**
  * APP 各个模块

@@ -4,17 +4,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import {createStore, combineReducers} from 'redux';
-import {Router, Route, Link, hashHistory, IndexRoute, useRouterHistory, browserHistory} from 'react-router';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 import {createHashHistory} from 'history'
-import {App, Home, TodoApp, WikiBox} from './components/App';
+import {App, Home, TodoApp, WikiBox} from './container/App';
 import NotFound from './components/NotFound';
 import todo from './components/Todos/reducer/reducers';
 
 var store = createStore(combineReducers({
     todo,
     routing: routerReducer
-}));
+}),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const history = syncHistoryWithStore(browserHistory, store);
 
