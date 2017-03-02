@@ -1,3 +1,8 @@
+/**
+ * @file webpack.config
+ * Created by haner on 2017/3/2.
+ */
+
 var webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
@@ -6,7 +11,7 @@ var webpack = require('webpack'),
     OpenBrowserPlugin = require('open-browser-webpack-plugin'),
     path = require('path');
 
-var port = 8088;
+var port = 8099;
 
 module.exports = {
     devServer: {

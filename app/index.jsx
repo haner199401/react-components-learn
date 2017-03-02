@@ -33,4 +33,4 @@ ReactDOM.render((
             <Route path="*" component={NotFound} status={404}/>
         </Router>
     </Provider>
-), document.querySelector('#root'));
+), document.querySelector('#container'));
