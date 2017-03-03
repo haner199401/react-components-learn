@@ -4,12 +4,19 @@
 
 import request from 'superagent';
 
-export const FETCH_ARTICEL_REQUEST = 'FETCH_ARTICEL_REQUEST';
-export const FETCH_ARTICEL_SUCCESS = 'FETCH_ARTICEL_SUCCESS';
-export const FETCH_ARTICEL_FAILURE = 'FETCH_ARTICEL_FAILURE';
+export const REQUEST_POSTS = 'REQUEST_POSTS';
+export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 
-export function getArticle(dispath) {
 
+export function fetchPostsIfNeeded(reddit) {
+    return (dispatch, getState) => {
+        if (shouldFetchPosts(getState(), reddit)) {
+            return dispatch(fetchPosts(reddit))
+        }
+    }
 }
 
 
+function fetchPosts(dispath) {
+
+}

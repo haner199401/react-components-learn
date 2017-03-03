@@ -2,7 +2,7 @@
 .DS_Store
 npm-debug.log
 bower_components
-libs
+libs/
 build
 /node_modules/
 /.idea/
