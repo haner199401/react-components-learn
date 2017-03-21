@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import {createStore, combineReducers} from 'redux';
 // import createLogger from 'redux-logger'
-// import thunkMiddleware from 'redux-thunk';
+
 
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
