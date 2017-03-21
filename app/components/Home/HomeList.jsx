@@ -1,14 +1,14 @@
 /**
  * Created by haner on 16/6/21.
  */
+import './style/home.scss';
 
-import React from 'react';
+import React,{ PropTypes} from 'react';
 import HomeRow from './HomeRow';
 
 class HomeList extends React.Component {
 
     render() {
-
         return (
             <ul>
                 {this.props.data.map(function(item,key){
@@ -18,7 +18,6 @@ class HomeList extends React.Component {
         );
     }
 }
-
 
 export default HomeList;
 

@@ -6,10 +6,12 @@ import React from 'react';
 
 class HomeRow extends React.Component {
     render() {
-        return (<li>
-            <img src={this.props.coverImg} alt=""/>
-            <h3>{this.props.title}</h3>
-        </li>);
+        return (
+            <li>
+                <img src={this.props.coverImg} alt=""/>
+                <h3>{this.props.title}</h3>
+            </li>
+        );
     }
 }
 
